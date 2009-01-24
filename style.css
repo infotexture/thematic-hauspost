@@ -16,15 +16,12 @@ $Date$
 /* @group Thematic Stylesheets */
 
 /* Reset browser defaults */
-
 @import url('../thematic/library/styles/reset.css');
 
 /* Apply basic typography styles */
-
 @import url('../thematic/library/styles/typography.css');
 
 /* Apply a basic layout */
-
 @import url('../thematic/library/layouts/2c-r-fixed.css');
 
 /* 4 Standard-Layouts: 
@@ -35,15 +32,12 @@ $Date$
 */
 
 /* Apply basic image styles */
-
 @import url('../thematic/library/styles/images.css');
 
 /* Apply default theme styles and colors */
-
 @import url('../thematic/library/styles/default.css');
 
 /* Prepare theme for plugins */
-
 @import url('../thematic/library/styles/plugins.css');
 
 /* @end */
@@ -108,9 +102,7 @@ div#container, div#primary, div#secondary {
    background: transparent;
    }
 
-/*
-
- @end */
+/* @end */
 
 /* @group Override Thematic default.css */
 
@@ -164,22 +156,18 @@ div#container, div#primary, div#secondary {
    }
 
 #siteinfo {
-    padding: 30px 0;
-    text-align: center;
-}
-      
+   padding: 30px 0;
+   text-align: center;
+   }
+
 .hentry {
    border-top: none;
    }
-   
+
 .entry-title a, h3 {
    color: #009;
-   }   
-   
-/* @end *
+   }
 
-/
+/* @end */
 
-/* $
-
-Id$ */
+/* $Id$ */
