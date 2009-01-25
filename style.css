@@ -54,7 +54,7 @@ body {
 /* @group Global Elements --------------------------------------------------- */
 
 body {
-   background: #e6e6fa url('images/putzkachel.jpg');
+   background: #BC9B7D url('images/putzkachel.jpg');
    color: #003;
    font-family: Georgia, "Times New Roman", Times, serif;
    }
@@ -64,6 +64,11 @@ body {
    }
 
 a:link, a:visited {}
+
+input#author, input#email, input#s, input#url, textarea {
+   font-family: Georgia, serif;
+   background-color: #F2F2FC;  /* Muschelfarbe */
+   }
 
 /* @end */
 
@@ -84,17 +89,21 @@ a:link, a:visited {}
    letter-spacing: normal;
    font-variant: small-caps;
    word-spacing: 90px;
-   padding: 140px 0 0 0;
+   padding: 60px 0 80px 0;
    border-bottom: none;
    }
 
 #blog-title a {
-   color: #009;
+   color: #e6e6fa;
    }
 
 #blog-description {
-   padding: 8px 0 1px 0;
+   padding: 0;
+   margin: 7px 0 0 0;
    color: #009;
+   font-variant: normal;
+   font-size: 16px;
+   line-height: 30px;
    }
 
 /* @end */
@@ -113,13 +122,13 @@ a:link, a:visited {}
 
 #main {
    background: url('images/page-background-strip.png') repeat-y;
-   padding: 30px 0;
+   padding: 0;
    }
 
 #main hr {
    color: #e6e6fa;
    margin: 0 auto;
-   width: 50%;
+   width: 90%;
    }
    
 #content {
@@ -134,19 +143,20 @@ a:link, a:visited {}
 .textwidget {
    margin-right: 10px;
    }
+   
 .hentry {
    border-top: none;
    }
 
-.entry-title a, h2, h3, h4, h5, h6 {
+.entry-title, .entry-title a {
    color: #009;
    }
 
-h2, h3 {
+h1, h2, h3, h4, h5, h6 {
+   color: #009;
    font-variant: small-caps;
    }
    
-
 /* @end */
 
 /* @group Footer ------------------------------------------------------------ */
