@@ -13,7 +13,7 @@ $Date$
 
 /* Zuerst importieren wir die Standard-Stylesheets von Thematic */
 
-/* @group Thematic Stylesheets */
+/* @group Import Thematic Stylesheets ----- */
 
 /* Reset browser defaults */
 @import url('../thematic/library/styles/reset.css');
@@ -42,85 +42,47 @@ $Date$
 
 /* @end */
 
-/* @group Typographie */
 
-/*
-Adapt the following for use in your Child Themes when using
-different font-sizes and line-heights
+/* Override Thematic 'default.css' ========================================== */
 
-body, input, textarea {
-    font: --px Arial,sans-serif;
-    line-height:--px;
-}
-p, ul, ol, dd, pre {
-    margin-bottom:--px;
-}
-pre, code {
-	font:--px Monaco, monospace;
-	line-height:--px;
-}
-
-*/
-
-/* @end */
-
-/* @group Bilder */
-
-/*
-Adapt the following for use in your Child Themes when using
-different font-sizes and line-heights
-
-.entry-content img,
-.wp-caption {
-    margin-bottom:--px;
-}
-.wp-smiley {
-    max-height:--px;
-}
-
-*/
-
-/* @end */
-
-/* @group Hauspost Branding */
 
 /* Un-comment the lines below to set a grid with 18px line-height
 body { 
-   background:url(../thematic/library/grids/960_grid_12_col.gif) repeat-y top center; }
-*/
+   background:url(../thematic/library/grids/960_grid_12_col.gif) repeat-y top center;
+    } */
+
+/* @group Global Elements --------------------------------------------------- */
 
 body {
-   background: #d5d6d7 url('images/putzkachel.jpg');
+   background: #e6e6fa url('images/putzkachel.jpg');
    color: #003;
+   font-family: Georgia, "Times New Roman", Times, serif;
    }
-
-div#branding {
-   background: transparent;
-   }
-
-div#container, div#primary, div#secondary {
-   background: transparent;
-   }
-
-/* @end */
-
-/* @group Override Thematic default.css */
-
+   
 #wrapper {
    border-top: none;
    }
 
+a:link, a:visited {}
+
+/* @end */
+
+/* @group Header ------------------------------------------------------------ */
+
 #header {
    background: url('images/hauspost-header.png') no-repeat center top;
    margin-top: 40px;
+   }
+
+#branding {
+   background: transparent;
    text-align: center;
    }
 
 #blog-title {
-   font-size: 36px;
    line-height: 20px;
-   font-weight: bold;
    letter-spacing: normal;
+   font-variant: small-caps;
    word-spacing: 90px;
    padding: 140px 0 0 0;
    border-bottom: none;
@@ -128,27 +90,66 @@ div#container, div#primary, div#secondary {
 
 #blog-title a {
    color: #009;
-   text-decoration: none;
    }
 
 #blog-description {
-   font-style: italic;
    padding: 8px 0 1px 0;
    color: #009;
    }
+
+/* @end */
+
+/* @group Menu -------------------------------------------------------------- */
+
+/* Removed from header.php, rule redundant */
 
 #access {
    display: none;
    }
 
+/* @end */
+
+/* @group Content ----------------------------------------------------------- */
+
 #main {
    background: url('images/page-background-strip.png') repeat-y;
+   padding: 30px 0;
    }
 
+#main hr {
+   color: #e6e6fa;
+   margin: 0 auto;
+   width: 50%;
+   }
+   
 #content {
    background: url('images/muschel.png') no-repeat scroll 0 top;
-   margin-left: 40px;
+   margin: 30px 40px;
    }
+
+.main-aside {
+   margin: 30px 0 0 30px;
+   }
+
+.textwidget {
+   margin-right: 10px;
+   }
+.hentry {
+   border-top: none;
+   }
+
+.entry-title a, h2, h3, h4, h5, h6 {
+   color: #009;
+   }
+
+h2, h3 {
+   font-variant: small-caps;
+   }
+   
+
+/* @end */
+
+/* @group Footer ------------------------------------------------------------ */
 
 #footer {
    background: url('images/hauspost-footer.png') no-repeat center top;
@@ -158,14 +159,6 @@ div#container, div#primary, div#secondary {
 #siteinfo {
    padding: 30px 0;
    text-align: center;
-   }
-
-.hentry {
-   border-top: none;
-   }
-
-.entry-title a, h3 {
-   color: #009;
    }
 
 /* @end */
