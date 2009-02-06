@@ -3,7 +3,7 @@
 // Edits based on "How to change Postheader" <http://www.bendler.tv/?p=327>
 
 // Information in Post Header
-function thematic_postheader() {
+function hauspost_postheader() {
     global $post, $authordata;
     
     if (is_single() || is_page()) {
@@ -19,7 +19,7 @@ function thematic_postheader() {
         $posttitle .= get_the_title();   
         $posttitle .= "</a></h2>\n";
     }
-    
+/*  Hide entry-meta stuff (author & date). Move to footer later 
     $postmeta = '<div class="entry-meta">';
     $postmeta .= '<span class="author vcard">';
     $postmeta .= __('By ', 'thematic') . '<a class="url fn n" href="';
@@ -32,18 +32,19 @@ function thematic_postheader() {
     $postmeta .= get_the_time('F j, Y');
     $postmeta .= '</abbr></span>';
     $postmeta .= "</div><!-- .entry-meta -->\n";
-    
-    if ($post->post_type == 'page' || is_404()) {
+*/    
+        if ($post->post_type == 'page' || is_404()) {
         $postheader = $posttitle;        
     } else {
         $postheader = $posttitle . $postmeta;    
     }
-    
-    echo apply_filters( 'thematic_postheader', $postheader ); // Filter to override default post header
+
+        echo apply_filters( 'hauspost_postheader', $postheader ); // Filter to override default post header
 }
+add_filter ('thematic_postheader', 'hauspost_postheader'); // Crazy important!
 
 // Information in Post Footer
-function thematic_postfooter() {
+function hauspost_postfooter() {
     global $id, $post;
 
     // Create $posteditlink    
@@ -59,11 +60,22 @@ function thematic_postfooter() {
         $postcategory .= '</span>';
     } elseif ( is_category() && $cats_meow = thematic_cats_meow(', ') ) { /* Returns categories other than the one queried */
         $postcategory .= __('Also posted in ', 'thematic') . $cats_meow;
-        $postcategory .= '</span> <span class="meta-sep">|</span>';
+        $postcategory .= '</span><span class="meta-sep"> </span>';
     } else {
         $postcategory .= __('Posted in ', 'thematic') . get_the_category_list(', ');
-        $postcategory .= '</span> <span class="meta-sep">|</span>';
+        $postcategory .= '</span><span class="meta-sep"> </span>';
     }
+    // Add the postmeta stuff from the header here? (Veröffentlicht in <cat> von <author> am <date>.)
+    $postmeta .= '<span class="author vcard">';
+    $postmeta .= __('By ', 'thematic') . '<a class="url fn n" href="';
+    $postmeta .= get_author_link(false, $authordata->ID, $authordata->user_nicename);
+    $postmeta .= '" title="' . __('View all posts by ', 'thematic') . get_the_author() . '">';
+    $postmeta .= get_the_author();
+    $postmeta .= '</a></span><span class="meta-sep"> am </span>';
+    $postmeta .= '<span class="entry-date"><abbr class="published" title="';
+    $postmeta .= get_the_time('Y-m-d\TH:i:sO') . '">';
+    $postmeta .= get_the_time('F j, Y');
+    $postmeta .= '</abbr></span><span class="meta-sep">. </span>';    
     
     // Display the tags
     if (is_single()) {
@@ -126,15 +138,15 @@ function thematic_postfooter() {
         $postfooter = '';
     } else {
         if (is_single()) {
-            $postfooter = $postcategory . $posttags . $postconnect;
+            $postfooter = $postcategory . $postmeta . $posttags . $postconnect;
         } else {
-            $postfooter = $postcategory . $posttags . $postcomments;
+            $postfooter = $postcategory . $postmeta . $posttags . $postcomments;
         }
         $postfooter .= "</div><!-- .entry-utility -->\n";    
     }
     
     // Put it on the screen
-    echo apply_filters( 'thematic_postfooter', $postfooter ); // Filter to override default post footer
+    echo apply_filters( 'hauspost_postfooter', $postfooter ); // Filter to override default post footer
 }
-
+add_filter ('thematic_postfooter', 'hauspost_postfooter'); // Crazy important!
 ?>
