@@ -1,7 +1,7 @@
 /*
 Theme Name: Thematic Hauspost
 Theme URI: http://www.potsdamer-hauspost.de
-Description: Erster Entwurf eines Hauspost-Themes auf der Basis von Thematic
+Description: Hauspost-Themelet auf der Basis von Thematic
 Author: $Author$
 Author URI: 
 Template: thematic
@@ -9,11 +9,9 @@ Version: $Revision$
 
 $Date$
 
-*/
+------------------------------------------------------------------- */
 
-/* Zuerst importieren wir die Standard-Stylesheets von Thematic */
-
-/* @group Import Thematic Stylesheets ----- */
+/* @group Import Thematic Stylesheets */
 
 /* Reset browser defaults */
 @import url('../thematic/library/styles/reset.css');
@@ -34,29 +32,32 @@ $Date$
 /* Apply basic image styles */
 @import url('../thematic/library/styles/images.css');
 
-/* Apply default theme styles and colors */
+/* Apply default theme styles and colors (overrides below) */
 @import url('../thematic/library/styles/default.css');
 
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
 
-/* @end */
+/* @end ----------------------------------------------------------- */
 
 
-/* Override Thematic 'default.css' ========================================== */
+/* Override Thematic defaults
+   Groups below come from Thematic 'default.css' */
 
 
-/* Un-comment the lines below to set a grid with 18px line-height
+/* @group Global Elements */
+
 body { 
+	
+/* Un-comment the lines below to set a grid with 18px line-height 
    background:url(../thematic/library/grids/960_grid_12_col.gif) repeat-y top center;
-    } */
-
-/* @group Global Elements --------------------------------------------------- */
-
-body {
+*/
    background: #BC9B7D url('images/putzkachel.jpg');
    color: #003;
    font-family: Georgia, "Times New Roman", Times, serif;
+   /* Fix sliding header/footer in narrow viewports */
+   /* http://themeshaper.com/forums/topic/header-background-colour-not-showing-to-edge-when-window-width-is-less-than-760 */
+   min-width:960px;
    }
    
 #wrapper {
@@ -70,9 +71,9 @@ input#author, input#email, input#s, input#url, textarea {
    background-color: #F2F2FC;  /* Muschelfarbe */
    }
 
-/* @end */
+/* @end ----------------------------------------------------------- */
 
-/* @group Header ------------------------------------------------------------ */
+/* @group Header */
 
 #header {
    background: url('images/hauspost-header.png') no-repeat center top;
@@ -106,9 +107,9 @@ input#author, input#email, input#s, input#url, textarea {
    line-height: 30px;
    }
 
-/* @end */
+/* @end ----------------------------------------------------------- */
 
-/* @group Menu -------------------------------------------------------------- */
+/* @group Menu */
 
 /* Removed from header.php, rule redundant */
 
@@ -116,9 +117,9 @@ input#author, input#email, input#s, input#url, textarea {
    display: none;
    }
 
-/* @end */
+/* @end ----------------------------------------------------------- */
 
-/* @group Content ----------------------------------------------------------- */
+/* @group Content */
 
 #main {
    background: url('images/page-background-strip.png') repeat-y;
@@ -157,9 +158,9 @@ h1, h2, h3, h4, h5, h6 {
    font-variant: small-caps;
    }
    
-/* @end */
+/* @end ----------------------------------------------------------- */
 
-/* @group Footer ------------------------------------------------------------ */
+/* @group Footer */
 
 #footer {
    background: url('images/hauspost-footer.png') no-repeat center top;
@@ -171,6 +172,6 @@ h1, h2, h3, h4, h5, h6 {
    text-align: center;
    }
 
-/* @end */
+/* @end ----------------------------------------------------------- */
 
 /* $Id$ */
