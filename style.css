@@ -1,7 +1,7 @@
 /*
 Theme Name: Thematic Hauspost
 Theme URI: http://www.potsdamer-hauspost.de
-Description: Hauspost-Themelet auf der Basis von Thematic 0.8.1
+Description: Hauspost-Themelet auf der Basis von Thematic Classic
 Author: $Author$
 Author URI: 
 Template: thematic
@@ -32,8 +32,10 @@ $Date$
 /* Apply basic image styles */
 @import url('../thematic/library/styles/images.css');
 
-/* Apply default theme styles and colors (overrides below) */
-@import url('../thematic/library/styles/default.css');
+/* Apply Thematic Classic theme styles and colors (overrides below) */
+@import url('../thematic/library/styles/classic.css');
+/* Classic Child Theme approximates the look of the original Thematic,
+   pre version 0.9. (Potsdamer Hauspost was designed for v0.8.1)    */
 
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
