@@ -123,7 +123,7 @@ function hauspost_postfooter() {
         $postcategory .= '</span><span class="meta-sep"> </span>';
     } else {
         $postcategory .= __('Posted in ', 'thematic') . get_the_category_list(', ');
-        $postcategory .= '</span><span class="meta-sep"> | </span>';
+        $postcategory .= '</span><span class="meta-sep"> </span>';
     }
     // Add the postmeta stuff from the header (Veröffentlicht in <cat> von <author> am <date>.)
     $postmeta .= '<span class="author vcard">';
@@ -132,10 +132,10 @@ function hauspost_postfooter() {
     $postmeta .= '" title="' . __('View all posts by ', 'thematic') . get_the_author() . '">';
     $postmeta .= get_the_author();
     $postmeta .= '</a></span><span class="meta-sep"> am </span>';
-    $postmeta .= '<span class="entry-date"><abbr class="published" title="';
-    $postmeta .= get_the_time('Y-m-d\TH:i:sO') . '">';
+    // Hide ugly ISO date abbreviation
+    $postmeta .= '<span class="entry-date">';
     $postmeta .= get_the_time('j. F Y');
-    $postmeta .= '</abbr></span><span class="meta-sep">. </span>';    
+    $postmeta .= '</span><span class="meta-sep">. </span>';    
     
     // Display the tags
     if (is_single()) {
