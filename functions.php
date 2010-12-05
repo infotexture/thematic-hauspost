@@ -1,4 +1,57 @@
 <?php
+/**
+ * Customized theme functions (post headers, footers, etc.)
+ * $Id$ 
+ */
+
+//
+//  Custom Child Theme Functions
+//
+
+// I've included a "commented out" sample function below that'll add a home link to your menu
+// More ideas can be found on "A Guide To Customizing The Thematic Theme Framework" 
+// http://themeshaper.com/thematic-for-wordpress/guide-customizing-thematic-theme-framework/
+
+// Adds a home link to your menu
+// http://codex.wordpress.org/Template_Tags/wp_page_menu
+// Revised for v0.9.7.7 per
+// <http://themeshaper.com/forums/topic/thematic-0976-is-online-important-release-notes>
+// and <http://developing.thematic4you.com/2010/04/breaking-things-to-fix-others/>
+function childtheme_menu_args($args) {
+    $args = array(
+        /*'show_home' => 'Start',*/
+        'sort_column' => 'menu_order',
+        'menu_class' => 'menu',
+        /*'exclude' => '6,508,511',   Hide Start, Impressum & Quellen in page menu */
+        'echo' => false
+    );
+	return $args;
+}
+add_filter('wp_page_menu_args','childtheme_menu_args', 20);
+
+// Update for Thematic v0.9.7.7
+// <http://themeshaper.com/forums/topic/thematic-0976-is-online-important-release-notes>
+//
+// Unleash the power of Thematic's dynamic classes
+define('THEMATIC_COMPATIBLE_BODY_CLASS', true);
+define('THEMATIC_COMPATIBLE_POST_CLASS', true);
+// Unleash the power of Thematic's comment form
+define('THEMATIC_COMPATIBLE_COMMENT_FORM', true);
+// Unleash the power of Thematic's feed link functions
+define('THEMATIC_COMPATIBLE_FEEDLINKS', true);
+
+//
+//  End default Child Theme Functions from 'thematicsamplechildtheme', begin customizations
+//
+
+// Remove blog title from header, let background image link to home per
+// <http://wizardinternetsolutions.com/wordpress/thematic/thematic-header-image-way/>
+// Add Header Image // Add Header Image
+function thematic_logo_image() {
+ echo '<a href="'.get_bloginfo('url').'" title="'.get_bloginfo('name').'" ><span id="header-image">&nbsp;</span></a>';
+}
+add_action('thematic_header','thematic_logo_image',6);
+
 
 // Edits based on "How to change Postheader" <http://www.bendler.tv/?p=327>
 
@@ -19,20 +72,24 @@ function hauspost_postheader() {
         $posttitle .= get_the_title();   
         $posttitle .= "</a></h2>\n";
     }
-/*  Hide entry-meta stuff (author & date). Move to footer later 
+/*  Post headers: entry-meta stuff (author & date)  */ 
     $postmeta = '<div class="entry-meta">';
+    /* Hide Author 
     $postmeta .= '<span class="author vcard">';
     $postmeta .= __('By ', 'thematic') . '<a class="url fn n" href="';
     $postmeta .= get_author_link(false, $authordata->ID, $authordata->user_nicename);
     $postmeta .= '" title="' . __('View all posts by ', 'thematic') . get_the_author() . '">';
     $postmeta .= get_the_author();
-    $postmeta .= '</a></span><span class="meta-sep"> | </span>';
-    $postmeta .= '<span class="entry-date"><abbr class="published" title="';
-    $postmeta .= get_the_time('Y-m-d\TH:i:sO') . '">';
-    $postmeta .= get_the_time('F j, Y');
-    $postmeta .= '</abbr></span>';
-    $postmeta .= "</div><!-- .entry-meta -->\n";
+    $postmeta .= '</a></span>';
 */    
+    /* Date */
+    $postmeta .= '<span class="entry-date">';
+    /* Hide ugly ISO date abbreviation */
+    /*$postmeta .= get_the_time('Y-m-d\TH:i:sO') . '">';*/
+    $postmeta .= get_the_time('j. F Y');
+    $postmeta .= '</span>';
+    $postmeta .= "</div><!-- .entry-meta -->\n";
+   
         if ($post->post_type == 'page' || is_404()) {
         $postheader = $posttitle;        
     } else {
@@ -63,9 +120,9 @@ function hauspost_postfooter() {
         $postcategory .= '</span><span class="meta-sep"> </span>';
     } else {
         $postcategory .= __('Posted in ', 'thematic') . get_the_category_list(', ');
-        $postcategory .= '</span><span class="meta-sep"> </span>';
+        $postcategory .= '</span><span class="meta-sep"> | </span>';
     }
-    // Add the postmeta stuff from the header here? (Veröffentlicht in <cat> von <author> am <date>.)
+    // Add the postmeta stuff from the header (Veröffentlicht in <cat> von <author> am <date>.)
     $postmeta .= '<span class="author vcard">';
     $postmeta .= __('By ', 'thematic') . '<a class="url fn n" href="';
     $postmeta .= get_author_link(false, $authordata->ID, $authordata->user_nicename);
@@ -74,7 +131,7 @@ function hauspost_postfooter() {
     $postmeta .= '</a></span><span class="meta-sep"> am </span>';
     $postmeta .= '<span class="entry-date"><abbr class="published" title="';
     $postmeta .= get_the_time('Y-m-d\TH:i:sO') . '">';
-    $postmeta .= get_the_time('F j, Y');
+    $postmeta .= get_the_time('j. F Y');
     $postmeta .= '</abbr></span><span class="meta-sep">. </span>';    
     
     // Display the tags
@@ -149,4 +206,6 @@ function hauspost_postfooter() {
     echo apply_filters( 'hauspost_postfooter', $postfooter ); // Filter to override default post footer
 }
 add_filter ('thematic_postfooter', 'hauspost_postfooter'); // Crazy important!
+
+// $Id$
 ?>
