@@ -127,7 +127,8 @@ function hauspost_postfooter() {
     }
     // Add the postmeta stuff from the header (Veröffentlicht in <cat> von <author> am <date>.)
     $postmeta .= '<span class="author vcard">';
-    $postmeta .= __('By ', 'thematic') . '<a class="url fn n" href="';
+    // Replace localized 'By' string with hard-coded "von"
+    $postmeta .= 'von <a class="url fn n" href="';
     $postmeta .= get_author_link(false, $authordata->ID, $authordata->user_nicename);
     $postmeta .= '" title="' . __('View all posts by ', 'thematic') . get_the_author() . '">';
     $postmeta .= get_the_author();
