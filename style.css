@@ -1,15 +1,19 @@
 /*
-Theme Name: Thematic Hauspost
-Theme URI: http://www.potsdamer-hauspost.de
-Description: Hauspost-Themelet auf der Basis von Thematic Classic
-Author: $Author$
-Author URI: 
-Template: thematic
-Version: $Revision$
-
+ Theme Name: Thematic Hauspost
+ Theme URI: http://www.potsdamer-hauspost.de
+ Description: Hauspost themelet (based on Thematic Classic)
+ $Author$
+ Author URI:  http://blog.infotexture.net
+ Template:    thematic
+ Version:    $Rev$
+ Tags: Thematic
+ .
 $Date$
+ .
+ ------------------------------------------------------------------ */
 
-------------------------------------------------------------------- */
+/* @override http://localhost:8888/wp_de/wp-content/themes/thematic-hauspost/style.css */
+/* @override http://www.potsdamer-hauspost.de/wp-content/themes/thematic-hauspost/style.css */
 
 /* @group Import Thematic Stylesheets */
 
@@ -22,30 +26,24 @@ $Date$
 /* Apply a basic layout */
 @import url('../thematic/library/layouts/2c-r-fixed.css');
 
-/* 4 Standard-Layouts: 
-@import url('../thematic/library/layouts/2c-l-fixed.css');
-@import url('../thematic/library/layouts/2c-r-fixed.css');
-@import url('../thematic/library/layouts/3c-fixed.css');
-@import url('../thematic/library/layouts/3c-r-fixed.css');
-*/
-
 /* Apply basic image styles */
 @import url('../thematic/library/styles/images.css');
 
 /* Apply Thematic Classic theme styles and colors (overrides below) */
 @import url('../thematic/library/styles/classic.css');
 /* Classic Child Theme approximates the look of the original Thematic,
-   pre version 0.9. (Potsdamer Hauspost was designed for v0.8.1)    */
+   pre version 0.9. (Potsdamer Hauspost was designed for Thematic v0.8.1)    */
 
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
 
 /* @end ----------------------------------------------------------- */
 
+/* Override Thematic defaults */
 
-/* Override Thematic defaults
-   Groups below come from Thematic 'default.css' */
 
+
+/* Groups below come from Thematic 'library/styles/default.css' */
 
 /* @group Global Elements */
 
@@ -77,12 +75,32 @@ input#author, input#email, input#s, input#url, textarea {
 
 /* @group Header */
 
+
 #header {
    background: url('images/hauspost-header.png') no-repeat center top;
    margin-top: 40px;
    }
 
 #branding {
+/* <http://wizardinternetsolutions.com/wordpress/thematic/thematic-header-image-way/> */
+/*
+   height: 200px;   
+   padding: 0;
+   position: relative;
+   }
+
+#header-image {
+   background: url(images/hauspost-header.png) no-repeat transparent;
+   height: 100%;
+   width: 100%;
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   }
+
+#branding a {
+   color: #708090;
+*/
    background: transparent;
    text-align: center;
    }
@@ -172,6 +190,28 @@ h1, h2, h3, h4, h5, h6 {
 #siteinfo {
    padding: 30px 0;
    text-align: center;
+   }
+
+/* @end ----------------------------------------------------------- */
+
+/* @group PageNavi */
+/* Using !important to override PageNavi CSS */
+/* @end ----------------------------------------------------------- */
+
+/* @group Images */
+
+/* Add 4px top margin to images to align with top of floated paras. */
+.entry-content img {
+   margin: 4px 0 18px 0;
+   }
+
+/* Restate margins to ALSO catch images with no class attribute */
+img.alignright, img[align="right"] {
+   margin-left: 20px;
+   }
+
+img.alignleft, img[align="left"] {
+   margin-right: 20px;
    }
 
 /* @end ----------------------------------------------------------- */
