@@ -188,8 +188,12 @@ h1, h2, h3, h4, h5, h6 {
    }
 
 #siteinfo {
+   /* Hide pending debugging of thematic dev info display */
+   display: none;
+   /*
    padding: 30px 0;
    text-align: center;
+   */
    }
 
 /* @end ----------------------------------------------------------- */
