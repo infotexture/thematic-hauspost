@@ -47,10 +47,12 @@ define('THEMATIC_COMPATIBLE_FEEDLINKS', true);
 // Remove blog title from header, let background image link to home per
 // <http://wizardinternetsolutions.com/wordpress/thematic/thematic-header-image-way/>
 // Add Header Image // Add Header Image
+/*
 function thematic_logo_image() {
  echo '<a href="'.get_bloginfo('url').'" title="'.get_bloginfo('name').'" ><span id="header-image">&nbsp;</span></a>';
 }
 add_action('thematic_header','thematic_logo_image',6);
+*/
 
 
 // Edits based on "How to change Postheader" <http://www.bendler.tv/?p=327>
@@ -74,20 +76,21 @@ function hauspost_postheader() {
     }
 /*  Post headers: entry-meta stuff (author & date)  */ 
     $postmeta = '<div class="entry-meta">';
-    /* Hide Author 
+    /* Hide 
+    // Author 
     $postmeta .= '<span class="author vcard">';
     $postmeta .= __('By ', 'thematic') . '<a class="url fn n" href="';
     $postmeta .= get_author_link(false, $authordata->ID, $authordata->user_nicename);
     $postmeta .= '" title="' . __('View all posts by ', 'thematic') . get_the_author() . '">';
     $postmeta .= get_the_author();
     $postmeta .= '</a></span>';
-*/    
-    /* Date */
+    // Date
     $postmeta .= '<span class="entry-date">';
-    /* Hide ugly ISO date abbreviation */
-    /*$postmeta .= get_the_time('Y-m-d\TH:i:sO') . '">';*/
+    // Hide ugly ISO date abbreviation
+    // $postmeta .= get_the_time('Y-m-d\TH:i:sO') . '">';
     $postmeta .= get_the_time('j. F Y');
     $postmeta .= '</span>';
+    */    
     $postmeta .= "</div><!-- .entry-meta -->\n";
    
         if ($post->post_type == 'page' || is_404()) {
