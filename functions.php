@@ -211,5 +211,15 @@ function hauspost_postfooter() {
 }
 add_filter ('thematic_postfooter', 'hauspost_postfooter'); // Crazy important!
 
+// <http://themeshaper.com/forums/topic/thematic-menus-demystified-1>
+// Remove the standard Thematic menu
+function remove_menu() {
+	remove_action('thematic_header','thematic_access',9);
+}
+add_action('init', 'remove_menu');
+
+// Moving the thematic menu above the header
+// add_action('thematic_aboveheader','thematic_access');
+
 // $Id$
 ?>
